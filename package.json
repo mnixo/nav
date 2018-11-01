@@ -1,0 +1,10 @@
+{
+  "name": "nav",
+  "version": "0.0.1",
+  "author": "Miguel Nixo <mnixo@nuxeo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^6.2.0",
+    "inquirer-autocomplete-prompt": "^1.0.1"
+  }
+}
