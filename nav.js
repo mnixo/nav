@@ -72,19 +72,25 @@ function handleAnswer(value) {
   switch (value) {
     case '/hideFiles':
       showFiles = false;
-      break;
+      return;
     case '/showFiles':
       showFiles = true;
-      break;
+      return;
     case '/hideHidden':
       showHidden = false;
-      break;
+      return;
     case '/showHidden':
       showHidden = true;
-      break;
-    default:
-      // the answer is not a command, trigger the directory change
-      process.chdir(deiconize(value));
+      return;
+  }
+  // the answer is not a command
+  const absolutePath = path.join(process.cwd(), deiconize(value));
+  if (fs.lstatSync(absolutePath).isDirectory()) {
+    // trigger the directory change
+    process.chdir(deiconize(value));
+  } else {
+    // log the file absolute path
+    console.log(absolutePath);
   }
 }
 
